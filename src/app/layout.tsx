@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
+import CookieConsent from "@/components/CookieConsent";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -42,6 +43,7 @@ export default function RootLayout({
           <Suspense fallback={null}>
             <BookingModal />
           </Suspense>
+          <CookieConsent />
         </SmoothScroll>
       </body>
     </html>

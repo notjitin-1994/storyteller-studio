@@ -62,7 +62,7 @@ export default function Navbar() {
           "fixed top-6 left-0 right-0 z-50 transition-all duration-700 px-6 md:px-12",
         )}
       >
-        <div className="relative z-20 flex w-full items-center justify-between px-6 py-4 rounded-full bg-white/80 backdrop-blur-2xl outline outline-[0.5px] outline-black/15 shadow-[0_8px_30px_rgba(0,0,0,0.04)] gap-12">
+        <div className="relative z-20 flex w-full items-center justify-between pl-4 pr-3 py-3 md:px-6 md:py-4 rounded-full bg-white/80 backdrop-blur-2xl outline outline-[0.5px] outline-black/15 shadow-[0_8px_30px_rgba(0,0,0,0.04)] gap-4 md:gap-12">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
             <div className="relative w-8 h-8 rounded-full overflow-hidden shrink-0 group-hover:scale-105 transition-transform duration-500">

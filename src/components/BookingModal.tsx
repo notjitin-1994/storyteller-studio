@@ -28,8 +28,10 @@ export default function BookingModal() {
     service: "",
     name: "",
     email: "",
+    phone: "",
     details: "",
   });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Lock body scroll and handle initial state when modal is open
   useEffect(() => {
@@ -46,7 +48,8 @@ export default function BookingModal() {
       // Reset state on close after animation finishes
       setTimeout(() => {
         setStep(1);
-        setFormData({ service: "", name: "", email: "", details: "" });
+        setFormData({ service: "", name: "", email: "", phone: "", details: "" });
+        setErrors({});
       }, 500);
     }
     return () => {
@@ -68,10 +71,47 @@ export default function BookingModal() {
     }
   }, [step, pathname, router]);
 
-  const handleNext = () => setStep((s) => Math.min(s + 1, 3));
-  const handlePrev = () => setStep((s) => Math.max(s - 1, 1));
+  const handleNext = () => {
+    if (step === 2) {
+      const newErrors: Record<string, string> = {};
+      
+      // Strict Name Validation (letters, spaces, hyphens only, 2-50 chars)
+      if (!/^[a-zA-Z\s\-]{2,50}$/.test(formData.name.trim())) {
+        newErrors.name = "Please enter a valid name (letters only).";
+      }
+      
+      // Strict Email Validation
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+        newErrors.email = "Please enter a valid email address.";
+      }
+      
+      // Strict Phone Validation (digits, plus, spaces, hyphens, 7-15 chars)
+      if (!/^[+]?[\d\s\-]{7,15}$/.test(formData.phone.trim())) {
+        newErrors.phone = "Please enter a valid phone number.";
+      }
+      
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+        return;
+      }
+      setErrors({});
+    }
+    setStep((s) => Math.min(s + 1, 3));
+  };
+  const handlePrev = () => {
+    setErrors({});
+    setStep((s) => Math.max(s - 1, 1));
+  };
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Strict Details Validation (prevent basic script injection, limit length)
+    const sanitizedDetails = formData.details.replace(/[<>]/g, "").trim();
+    if (sanitizedDetails.length < 10 || sanitizedDetails.length > 2000) {
+      setErrors({ details: "Please provide valid details (10-2000 characters, no HTML)." });
+      return;
+    }
+    
     setStep(4); // Success step
   };
 
@@ -146,22 +186,57 @@ export default function BookingModal() {
                 <input 
                   type="text" 
                   required
+                  maxLength={50}
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, name: e.target.value });
+                    if (errors.name) setErrors(prev => ({ ...prev, name: "" }));
+                  }}
                   placeholder="John Doe"
-                  className="w-full px-5 py-4 rounded-2xl bg-black/[0.03] border border-black/5 focus:border-black/20 focus:bg-white focus:ring-4 focus:ring-black/5 outline-none transition-all placeholder:text-black/30"
+                  className={cn(
+                    "w-full px-5 py-4 rounded-2xl bg-black/[0.03] border focus:bg-white focus:ring-4 outline-none transition-all placeholder:text-black/30",
+                    errors.name ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-black/5 focus:border-black/20 focus:ring-black/5"
+                  )}
                 />
+                {errors.name && <p className="text-red-500 text-xs px-2">{errors.name}</p>}
               </div>
               <div className="space-y-1.5">
                 <label className="text-sm font-medium text-black/70 px-1">Email Address</label>
                 <input 
                   type="email"
                   required
+                  maxLength={100}
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, email: e.target.value });
+                    if (errors.email) setErrors(prev => ({ ...prev, email: "" }));
+                  }}
                   placeholder="john@example.com"
-                  className="w-full px-5 py-4 rounded-2xl bg-black/[0.03] border border-black/5 focus:border-black/20 focus:bg-white focus:ring-4 focus:ring-black/5 outline-none transition-all placeholder:text-black/30"
+                  className={cn(
+                    "w-full px-5 py-4 rounded-2xl bg-black/[0.03] border focus:bg-white focus:ring-4 outline-none transition-all placeholder:text-black/30",
+                    errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-black/5 focus:border-black/20 focus:ring-black/5"
+                  )}
                 />
+                {errors.email && <p className="text-red-500 text-xs px-2">{errors.email}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label className="text-sm font-medium text-black/70 px-1">Mobile Number</label>
+                <input 
+                  type="tel"
+                  required
+                  maxLength={20}
+                  value={formData.phone}
+                  onChange={(e) => {
+                    setFormData({ ...formData, phone: e.target.value });
+                    if (errors.phone) setErrors(prev => ({ ...prev, phone: "" }));
+                  }}
+                  placeholder="+1 (555) 000-0000"
+                  className={cn(
+                    "w-full px-5 py-4 rounded-2xl bg-black/[0.03] border focus:bg-white focus:ring-4 outline-none transition-all placeholder:text-black/30",
+                    errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-black/5 focus:border-black/20 focus:ring-black/5"
+                  )}
+                />
+                {errors.phone && <p className="text-red-500 text-xs px-2">{errors.phone}</p>}
               </div>
             </div>
 
@@ -176,7 +251,7 @@ export default function BookingModal() {
               <button
                 type="button"
                 onClick={handleNext}
-                disabled={!formData.name || !formData.email}
+                disabled={!formData.name || !formData.email || !formData.phone}
                 className="group flex items-center rounded-full bg-black pl-6 pr-2 py-2 text-white disabled:opacity-50 disabled:cursor-not-allowed transition-all active:scale-95"
               >
                 <span className="text-sm font-semibold tracking-wide uppercase mr-4">Continue</span>
@@ -205,11 +280,19 @@ export default function BookingModal() {
                 <label className="text-sm font-medium text-black/70 px-1">How can we help?</label>
                 <textarea 
                   required
+                  maxLength={2000}
                   value={formData.details}
-                  onChange={(e) => setFormData({ ...formData, details: e.target.value })}
+                  onChange={(e) => {
+                    setFormData({ ...formData, details: e.target.value });
+                    if (errors.details) setErrors(prev => ({ ...prev, details: "" }));
+                  }}
                   placeholder="I'm working on a short film and need..."
-                  className="w-full flex-1 min-h-[150px] px-5 py-4 rounded-2xl bg-black/[0.03] border border-black/5 focus:border-black/20 focus:bg-white focus:ring-4 focus:ring-black/5 outline-none transition-all placeholder:text-black/30 resize-none"
+                  className={cn(
+                    "w-full flex-1 min-h-[150px] px-5 py-4 rounded-2xl bg-black/[0.03] border focus:bg-white focus:ring-4 outline-none transition-all placeholder:text-black/30 resize-none",
+                    errors.details ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-black/5 focus:border-black/20 focus:ring-black/5"
+                  )}
                 />
+                {errors.details && <p className="text-red-500 text-xs px-2">{errors.details}</p>}
               </div>
             </div>
 
