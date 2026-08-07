@@ -363,7 +363,7 @@ export default function BookingModal() {
             {/* Close Button */}
             <button
               onClick={closeModal}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 text-black/60 hover:text-black transition-colors z-10"
+              className="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full text-black/40 hover:text-black transition-colors z-10"
             >
               <X size={20} weight="bold" />
             </button>

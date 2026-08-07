@@ -39,15 +39,15 @@ export default function Footer() {
           <h4 className="font-display text-sm  tracking-wider uppercase text-black/40 mb-2">
             Follow Us
           </h4>
-          <a href="#" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
+          <a href="https://www.instagram.com/thestorytellersaudio/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
             <InstagramLogo size={20} weight="light" />
             Instagram
           </a>
-          <a href="#" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
+          <a href="https://www.youtube.com/@TheStoryteller-GK" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
             <YoutubeLogo size={20} weight="light" />
             YouTube
           </a>
-          <a href="#" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
+          <a href="https://www.linkedin.com/in/bharat-nair-665711171/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-black/70 hover:text-black transition-colors duration-300 text-sm">
             <LinkedinLogo size={20} weight="light" />
             LinkedIn
           </a>
