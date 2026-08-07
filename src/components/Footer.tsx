@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="relative w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-sm border border-black/5">
               <Image src="/logo.png" alt="The Storyteller Studio" fill sizes="40px" className="object-contain" />
             </div>
-            <span className="font-display  text-xl tracking-tight text-black">
+            <span className="font-sans font-semibold text-xl tracking-tight text-black">
               The Storyteller Studio
             </span>
           </div>
