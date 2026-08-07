@@ -127,9 +127,10 @@ export default function Hero() {
 
         <p 
           ref={subtitleRef}
-          className="text-xl md:text-3xl text-black/60 max-w-3xl text-balance mb-12 font-sans font-light leading-snug"
+          className="text-xl md:text-3xl text-black/60 max-w-5xl text-center mb-12 font-sans font-light leading-snug"
         >
-          Good Audio design makes the visuals leak emotions. Sound design available and affordable for all your project needs.
+          <span className="block mb-2">Good Audio design makes the visuals leak emotions.</span>
+          <span className="block text-balance">Sound design available and affordable<br className="hidden sm:block"/> for all your project needs.</span>
         </p>
 
         <div 
