@@ -87,9 +87,9 @@ export default function Navbar() {
                   {link.name}
                 </Link>
 
-                {/* Invisible hover bridge to maintain hover state across the navbar padding */}
+                {/* Invisible hover bridge to maintain hover state across the gap */}
                 {link.dropdownColumns && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 w-48 h-12 bg-transparent z-20" />
+                  <div className="absolute top-full left-0 w-full h-6 bg-transparent z-20" />
                 )}
 
                 {/* Desktop Dropdown */}
