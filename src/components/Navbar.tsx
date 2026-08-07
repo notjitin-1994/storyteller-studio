@@ -147,7 +147,7 @@ export default function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-black/5 border border-black/5"
+            className="md:hidden flex items-center justify-center w-10 h-10 shrink-0 rounded-full bg-black/5 border border-black/5"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={20} className="text-black" /> : <List size={20} className="text-black" />}
