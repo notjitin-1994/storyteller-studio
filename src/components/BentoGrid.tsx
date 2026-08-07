@@ -110,16 +110,22 @@ export default function BentoGrid() {
                 <h3 className="font-display text-2xl  text-black mb-2 drop-shadow-sm">
                   {service.title}
                 </h3>
-                {service.rowSpan === "md:row-span-2" && (
-                  <p className="text-black/70 text-base max-w-[90%] font-light leading-relaxed">
-                    {service.desc}
-                  </p>
-                )}
               </div>
             </div>
           </motion.div>
           </Link>
         ))}
+      </div>
+
+      <div className="mt-12 flex justify-center">
+        <Link
+          href="/services"
+          className="group flex items-center justify-center rounded-full border border-black/20 bg-transparent text-black px-8 py-3 transition-all duration-300 hover:bg-black hover:text-white hover:border-black shadow-sm"
+        >
+          <span className="text-sm font-medium tracking-[0.15em] uppercase">
+            View all services
+          </span>
+        </Link>
       </div>
     </section>
   );
