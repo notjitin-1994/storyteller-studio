@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { motion, AnimatePresence } from "motion/react";
 import { Cookie } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";

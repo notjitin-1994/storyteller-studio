@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { motion } from "motion/react";
 
 export default function WorkTogether() {

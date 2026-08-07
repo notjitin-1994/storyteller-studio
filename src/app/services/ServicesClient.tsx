@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { ArrowUpRight, X } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 

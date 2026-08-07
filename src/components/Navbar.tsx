@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { usePathname } from "next/navigation";
 import { List, X } from "@phosphor-icons/react";
 import { useState, useEffect } from "react";

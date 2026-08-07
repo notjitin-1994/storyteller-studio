@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { SpeakerHifi, MicrophoneStage, Sliders, MusicNotes, Waves, FilmStrip } from "@phosphor-icons/react/dist/ssr";
 
 const SERVICES = [

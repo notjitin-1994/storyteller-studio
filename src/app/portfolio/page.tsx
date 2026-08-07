@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { Play } from "@phosphor-icons/react/dist/ssr";
 
 const PORTFOLIO_ITEMS = [

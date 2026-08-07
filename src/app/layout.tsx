@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BookingModal from "@/components/BookingModal";
 import CookieConsent from "@/components/CookieConsent";
+import { TransitionProvider } from "@/components/TransitionProvider";
 import { Suspense } from "react";
 
 const inter = Inter({
@@ -34,17 +35,19 @@ export default function RootLayout({
       <body
         className={`antialiased bg-[#Fcfbf9] text-[#0a0a0a] selection:bg-black/10 min-h-[100dvh] flex flex-col font-sans`}
       >
-        <SmoothScroll>
-          <Navbar />
-          <main className="flex-1 w-full max-w-full">
-            {children}
-          </main>
-          <Footer />
-          <Suspense fallback={null}>
-            <BookingModal />
-          </Suspense>
-          <CookieConsent />
-        </SmoothScroll>
+        <TransitionProvider>
+          <SmoothScroll>
+            <Navbar />
+            <main className="flex-1 w-full max-w-full">
+              {children}
+            </main>
+            <Footer />
+            <Suspense fallback={null}>
+              <BookingModal />
+            </Suspense>
+            <CookieConsent />
+          </SmoothScroll>
+        </TransitionProvider>
       </body>
     </html>
   );

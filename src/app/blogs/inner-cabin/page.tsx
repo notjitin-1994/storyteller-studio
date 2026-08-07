@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { TransitionLink as Link } from "@/components/TransitionLink";
 import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 export const metadata = {
