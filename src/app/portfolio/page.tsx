@@ -54,10 +54,10 @@ export default function PortfolioPage() {
                   className="object-cover transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
                 />
                 
-                {/* Overlay & Play Icon */}
-                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-white/30 backdrop-blur-md flex items-center justify-center border border-white/40 transform scale-90 group-hover:scale-100 transition-all duration-500 delay-75 shadow-xl">
-                    <Play weight="fill" className="text-white w-6 h-6 ml-1 drop-shadow-md" />
+                {/* Overlay & YouTube Play Button */}
+                <div className="absolute inset-0 flex items-center justify-center group-hover:bg-black/10 transition-colors duration-500">
+                  <div className="w-[68px] h-[48px] bg-[#FF0000] rounded-[14px] flex items-center justify-center shadow-[0_4px_14px_rgba(255,0,0,0.3)] transform transition-transform duration-300 ease-out group-hover:scale-110">
+                    <Play weight="fill" className="text-white w-8 h-8 drop-shadow-sm" />
                   </div>
                 </div>
               </div>
