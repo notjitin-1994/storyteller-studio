@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -111,6 +112,18 @@ export default function WhyUs() {
               </div>
             </div>
           ))}
+
+          {/* View Portfolio Button */}
+          <div className="mt-8 flex justify-start">
+            <Link
+              href="/portfolio"
+              className="group flex items-center justify-center rounded-full border border-black/20 bg-transparent text-black px-8 py-3 transition-all duration-300 hover:bg-black hover:text-white hover:border-black shadow-sm"
+            >
+              <span className="text-sm font-medium tracking-[0.15em] uppercase">
+                View Portfolio
+              </span>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
