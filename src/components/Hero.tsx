@@ -127,7 +127,7 @@ export default function Hero() {
 
         <p 
           ref={subtitleRef}
-          className="text-xl md:text-3xl text-black/60 max-w-3xl text-balance mb-12 font-display font-light leading-snug"
+          className="text-xl md:text-3xl text-black/60 max-w-3xl text-balance mb-12 font-sans font-light leading-snug"
         >
           Good Audio design makes the visuals leak emotions. Sound design available and affordable for all your project needs.
         </p>
