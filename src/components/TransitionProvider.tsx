@@ -61,7 +61,7 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
                 animate={{ y: "0%" }}
                 exit={{ y: "-100%" }}
                 transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1], delay: i * 0.08 }}
-                className={`flex-1 h-full ${colColor} pointer-events-auto border-x border-black/5`}
+                className={`flex-1 h-full ${colColor} pointer-events-auto`}
               />
             ))}
           </div>
