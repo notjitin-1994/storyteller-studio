@@ -24,17 +24,14 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
   const router = useRouter();
 
   const navigate = (href: string) => {
-    // 5 columns, roughly equal black and white
-    const baseColors = [
-      "bg-black",
-      "bg-black",
-      "bg-[#Fcfbf9]", // matching the off-white background of the site instead of pure white looks more premium
-      "bg-[#Fcfbf9]",
-      Math.random() > 0.5 ? "bg-black" : "bg-[#Fcfbf9]"
-    ];
-    // Shuffle the array
-    const shuffled = baseColors.sort(() => Math.random() - 0.5);
-    setColumns(shuffled);
+    // Pick ONE color for the entire wipe to make all columns uniform, 
+    // alternating frequently between black and white
+    const selectedColor = Math.random() > 0.5 ? "bg-black" : "bg-[#Fcfbf9]";
+    
+    // Create an array of 5 columns, all sharing the same color
+    const newColumns = Array(5).fill(selectedColor);
+    
+    setColumns(newColumns);
     setIsWiping(true);
 
     // Duration is 0.6s. Stagger is 0.08s * 4 = 0.32s. Total = 0.92s.
