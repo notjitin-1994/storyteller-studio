@@ -51,12 +51,8 @@ export function TransitionProvider({ children }: { children: ReactNode }) {
             animate={{ y: "0%" }}
             exit={{ y: "-100%" }}
             transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-            className={`fixed inset-0 z-[9999] w-full h-screen flex items-center justify-center overflow-hidden ${color}`}
-          >
-            <span className={`font-display font-bold text-3xl md:text-5xl tracking-tight ${color === "bg-black" ? "text-white" : "text-black"}`}>
-              The Storyteller Audio Studio
-            </span>
-          </motion.div>
+            className={`fixed inset-0 z-[9999] w-full h-screen ${color}`}
+          />
         )}
       </AnimatePresence>
     </TransitionContext.Provider>
