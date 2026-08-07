@@ -85,9 +85,10 @@ export default function BookingModal() {
         newErrors.email = "Please enter a valid email address.";
       }
       
-      // Strict Phone Validation (digits, plus, spaces, hyphens, 7-15 chars)
-      if (!/^[+]?[\d\s\-]{7,15}$/.test(formData.phone.trim())) {
-        newErrors.phone = "Please enter a valid phone number.";
+      // Strict Phone Validation (Indian Mobile Number)
+      const phoneRegex = /^(?:\+91|91)?[-\s]?[6-9]\d{4}[-\s]?\d{5}$/;
+      if (!phoneRegex.test(formData.phone.trim())) {
+        newErrors.phone = "Please enter a valid Indian mobile number.";
       }
       
       if (Object.keys(newErrors).length > 0) {
@@ -230,7 +231,7 @@ export default function BookingModal() {
                     setFormData({ ...formData, phone: e.target.value });
                     if (errors.phone) setErrors(prev => ({ ...prev, phone: "" }));
                   }}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+91 98765 43210"
                   className={cn(
                     "w-full px-5 py-4 rounded-2xl bg-black/[0.03] border focus:bg-white focus:ring-4 outline-none transition-all placeholder:text-black/30",
                     errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/10" : "border-black/5 focus:border-black/20 focus:ring-black/5"

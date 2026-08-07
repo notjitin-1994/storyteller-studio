@@ -80,43 +80,58 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
   }
 
   return (
-    <div className="min-h-screen bg-[#Fcfbf9] pt-[140px] pb-24">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 items-start">
+    <div className="relative min-h-screen md:bg-[#Fcfbf9] pt-[140px] pb-24 overflow-hidden flex flex-col">
+      
+      {/* Mobile Background Image */}
+      <div className="absolute inset-0 w-full h-full md:hidden z-0">
+        <Image 
+          src={service.image} 
+          alt={service.title} 
+          fill 
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+        {/* Dark Overlay for text legibility on mobile */}
+        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+      </div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row gap-16 items-start flex-1">
         
         {/* Left Side: Text Content */}
-        <div className="w-full md:w-1/2 flex flex-col pt-8">
-          <Link href="/" className="text-sm font-semibold tracking-widest uppercase text-black/50 hover:text-black transition-colors mb-12 flex items-center gap-2">
+        <div className="w-full md:w-1/2 flex flex-col pt-8 text-white md:text-black">
+          <Link href="/" className="text-sm font-semibold tracking-widest uppercase text-white/70 hover:text-white md:text-black/50 md:hover:text-black transition-colors mb-12 flex items-center gap-2">
             ← Back to Home
           </Link>
 
-          <span className="inline-block px-4 py-1.5 rounded-full border border-black/10 bg-black/5 text-xs font-medium tracking-widest uppercase text-black/60 shadow-sm w-fit mb-6">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 md:border-black/10 bg-white/10 md:bg-black/5 text-xs font-medium tracking-widest uppercase text-white/90 md:text-black/60 shadow-sm w-fit mb-6">
             {service.subtitle}
           </span>
 
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display  leading-[1] tracking-tight mb-8 text-[#0a0a0a]">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-display leading-[1] tracking-tight mb-8 text-white md:text-[#0a0a0a]">
             {service.title}
           </h1>
 
-          <p className="text-black/70 text-xl font-light leading-relaxed max-w-lg mb-12">
+          <p className="text-white/80 md:text-black/70 text-xl font-light leading-relaxed max-w-lg mb-12">
             {service.description}
           </p>
 
           <Link
             href={`?booking=true&service=${service.modalId}`}
             scroll={false}
-            className="group w-fit flex items-center justify-center rounded-full bg-black pl-5 pr-1.5 py-1.5 text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[0.98] active:scale-95 shadow-lg"
+            className="group w-fit flex items-center justify-center rounded-full bg-white md:bg-black pl-5 pr-1.5 py-1.5 text-black md:text-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:scale-[0.98] active:scale-95 shadow-lg"
           >
             <span className="text-sm font-semibold tracking-wide uppercase mr-4">
               Book this Service
             </span>
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-black/10 md:bg-white/10 transition-transform duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:scale-105">
               <svg
                 width="12"
                 height="12"
                 viewBox="0 0 12 12"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-white transition-transform duration-500 group-hover:rotate-45"
+                className="text-black md:text-white transition-transform duration-500 group-hover:rotate-45"
               >
                 <path
                   d="M1 11L11 1M11 1H3.5M11 1V8.5"
@@ -130,8 +145,8 @@ export default async function ServicePage(props: { params: Promise<{ slug: strin
           </Link>
         </div>
 
-        {/* Right Side: Massive Image */}
-        <div className="w-full md:w-1/2">
+        {/* Right Side: Massive Image (Hidden on Mobile) */}
+        <div className="hidden md:block w-full md:w-1/2">
           <div className="relative w-full aspect-[4/5] md:aspect-square lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-sm border border-black/5 bg-white">
             <Image 
               src={service.image} 

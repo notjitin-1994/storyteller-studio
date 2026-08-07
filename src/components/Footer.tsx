@@ -57,10 +57,10 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto mt-24 pt-8 border-t border-black/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-black/40">
         <p>© 2026 The Storyteller Studio. All rights reserved.</p>
-        <div className="flex gap-6">
-          <a href="#" className="hover:text-black transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-black transition-colors">Terms of Service</a>
-        </div>
+          <div className="flex flex-col md:flex-row items-center gap-4 text-black/40 text-sm">
+            <Link href="/privacy-policy" className="hover:text-black transition-colors">Privacy Policy</Link>
+            <Link href="/terms-of-service" className="hover:text-black transition-colors">Terms of Service</Link>
+          </div>
       </div>
     </footer>
   );
