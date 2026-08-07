@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { ArrowRight, CheckCircle, MapPin, Phone, EnvelopeSimple } from "@phosphor-icons/react";
+import { ArrowRight, CheckCircle, InstagramLogo, YoutubeLogo, LinkedinLogo } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 
 export default function ContactPage() {
@@ -86,31 +86,31 @@ export default function ContactPage() {
           <div className="flex flex-col gap-8 mt-4">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center shrink-0">
-                <EnvelopeSimple size={24} className="text-black/70" />
+                <InstagramLogo size={24} className="text-black/70" />
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">Email Us</span>
-                <a href="mailto:hello@storyteller.studio" className="text-xl font-medium hover:text-black/60 transition-colors">hello@storyteller.studio</a>
+                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">Instagram</span>
+                <a href="https://www.instagram.com/thestorytellersaudio/" target="_blank" rel="noopener noreferrer" className="text-xl font-medium hover:text-black/60 transition-colors">@thestorytellersaudio</a>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center shrink-0">
-                <Phone size={24} className="text-black/70" />
+                <YoutubeLogo size={24} className="text-black/70" />
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">Call Us</span>
-                <a href="tel:+15551234567" className="text-xl font-medium hover:text-black/60 transition-colors">+1 (555) 123-4567</a>
+                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">YouTube</span>
+                <a href="https://www.youtube.com/@TheStoryteller-GK" target="_blank" rel="noopener noreferrer" className="text-xl font-medium hover:text-black/60 transition-colors">TheStoryteller-GK</a>
               </div>
             </div>
 
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 rounded-full bg-black/5 flex items-center justify-center shrink-0">
-                <MapPin size={24} className="text-black/70" />
+                <LinkedinLogo size={24} className="text-black/70" />
               </div>
               <div className="flex flex-col">
-                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">Visit Studio</span>
-                <span className="text-xl font-medium text-black">123 Audio Ave, Suite 400<br/>Los Angeles, CA 90028</span>
+                <span className="text-sm font-semibold text-black/50 uppercase tracking-wider mb-1">LinkedIn</span>
+                <a href="https://www.linkedin.com/in/bharat-nair-665711171/" target="_blank" rel="noopener noreferrer" className="text-xl font-medium hover:text-black/60 transition-colors">Bharat Nair</a>
               </div>
             </div>
           </div>
